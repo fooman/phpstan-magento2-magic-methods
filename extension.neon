@@ -1,0 +1,5 @@
+services:
+	-
+		class: Fooman\PHPStan\MagentoMagicMethodsReflectionExtension
+		tags:
+			- phpstan.broker.methodsClassReflectionExtension

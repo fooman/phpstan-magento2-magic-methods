@@ -1,0 +1,9 @@
+{
+    "name": "fooman/phpstan-magento-magic-methods",
+    "license": ["MIT"],
+    "autoload": {
+        "psr-4": {
+            "Fooman\\PHPStan\\": "src/"
+        }
+    }
+}
