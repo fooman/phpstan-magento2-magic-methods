@@ -5,18 +5,9 @@ namespace Fooman\PHPStan;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\MethodsClassReflectionExtension;
-use PHPStan\Reflection\BrokerAwareClassReflectionExtension;
 
-class MagentoMagicMethodsReflectionExtension implements MethodsClassReflectionExtension, BrokerAwareClassReflectionExtension
+class MagentoMagicMethodsReflectionExtension implements MethodsClassReflectionExtension
 {
-
-    /** @var \PHPStan\Broker\Broker */
-    private $broker;
-
-    public function setBroker(\PHPStan\Broker\Broker $broker)
-    {
-        $this->broker = $broker;
-    }
 
     public function hasMethod(ClassReflection $classReflection, string $methodName): bool
     {
