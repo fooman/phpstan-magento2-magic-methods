@@ -1,5 +1,5 @@
 {
-    "name": "fooman/phpstan-magento-magic-methods",
+    "name": "fooman/phpstan-magento2-magic-methods",
     "license": ["MIT"],
     "autoload": {
         "psr-4": {
