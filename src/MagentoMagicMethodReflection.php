@@ -1,12 +1,19 @@
 <?php
+declare(strict_types=1);
 
 namespace Fooman\PHPStan;
 
 use PHPStan\Reflection\ClassReflection;
+use PHPStan\Reflection\ClassMemberReflection;
 use PHPStan\Reflection\MethodReflection;
+use PHPStan\Reflection\TrivialParametersAcceptor;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\Type;
 
+/**
+ * Class MagentoMagicMethodReflection
+ * @package Fooman\PHPStan
+ */
 class MagentoMagicMethodReflection implements MethodReflection
 {
     /** @var string */
@@ -15,27 +22,45 @@ class MagentoMagicMethodReflection implements MethodReflection
     /** @var \PHPStan\Reflection\ClassReflection */
     private $dataObject;
 
+    /**
+     * MagentoMagicMethodReflection constructor.
+     *
+     * @param ClassReflection $dataObj
+     * @param string $name
+     */
     public function __construct(ClassReflection $dataObj, string $name)
     {
         $this->dataObject = $dataObj;
         $this->name = $name;
     }
 
+    /**
+     * @return string
+     */
     public function getName(): string
     {
         return $this->name;
     }
 
+    /**
+     * @return ClassReflection
+     */
     public function getDeclaringClass(): ClassReflection
     {
         return $this->dataObject;
     }
 
-    public function getPrototype(): MethodReflection
+    /**
+     * @return ClassMemberReflection
+     */
+    public function getPrototype(): ClassMemberReflection
     {
         return $this;
     }
 
+    /**
+     * @return bool
+     */
     public function isStatic(): bool
     {
         return false;
@@ -49,23 +74,45 @@ class MagentoMagicMethodReflection implements MethodReflection
         return [];
     }
 
+    /**
+     * @return bool
+     */
     public function isVariadic(): bool
     {
         return true;
     }
 
+    /**
+     * @return bool
+     */
     public function isPrivate(): bool
     {
         return false;
     }
 
+    /**
+     * @return bool
+     */
     public function isPublic(): bool
     {
         return true;
     }
 
+    /**
+     * @return Type
+     */
     public function getReturnType(): Type
     {
         return new MixedType(true);
+    }
+
+    /**
+     * @return array
+     */
+    public function getVariants(): array
+    {
+        return [
+            new TrivialParametersAcceptor(),
+        ];
     }
 }
