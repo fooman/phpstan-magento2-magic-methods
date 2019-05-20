@@ -1,9 +1,30 @@
 {
     "name": "fooman/phpstan-magento2-magic-methods",
+    "type": "phpstan-extension",
+    "description": "PhpStan extension to support Magento 2's use of magic methods",
     "license": ["MIT"],
     "autoload": {
         "psr-4": {
             "Fooman\\PHPStan\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.1",
+        "phpstan/phpstan": ">=0.11.6",
+        "phpstan/extension-installer": "^1.0",
+        "magento/framework": "^100.0 | ^101.0.0 | ^102.0.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo-magento-mirror.fooman.co.nz/"
+        }
+    ],
+    "extra": {
+        "phpstan": {
+            "includes": [
+                "extension.neon"
+            ]
         }
     }
 }
