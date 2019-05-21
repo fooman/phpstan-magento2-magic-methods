@@ -3,3 +3,6 @@ services:
     class: Fooman\PHPStan\MagentoMagicMethodsReflectionExtension
     tags:
         - phpstan.broker.methodsClassReflectionExtension
+parameters:
+    autoload_files:
+        - %rootDir%/../../fooman/phpstan-magento2-magic-methods/bootstrap.php
