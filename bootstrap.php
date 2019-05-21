@@ -9,7 +9,7 @@ use Magento\Framework\TestFramework\Unit\Autoloader\FactoryGenerator;
 use Magento\Framework\TestFramework\Unit\Autoloader\GeneratedClassesAutoloader;
 
 if (!defined('TESTS_TEMP_DIR')) {
-    define('TESTS_TEMP_DIR', dirname(dirname(dirname(__DIR__))) . '/tmp');
+    define('TESTS_TEMP_DIR', dirname(dirname(dirname(__DIR__))) . '/var');
 }
 
 $generatorIo = new Io(
