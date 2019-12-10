@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Fooman\PHPStan;
 
 use Magento\Framework\DataObject;
+use Magento\Framework\Session\SessionManager;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\MethodsClassReflectionExtension;
@@ -21,9 +22,16 @@ class MagentoMagicMethodsReflectionExtension implements MethodsClassReflectionEx
      */
     public function hasMethod(ClassReflection $classReflection, string $methodName): bool
     {
-        $magentoMagicMethods = ['get', 'set', 'uns', 'has'];
-        return $classReflection->isSubclassOf(DataObject::class)
-            && in_array(substr($methodName, 0, 3), $magentoMagicMethods);
+        if( $classReflection->getName() == DataObject::class || $classReflection->isSubclassOf(DataObject::class)){
+            $magentoMagicMethods = ['get', 'set', 'uns', 'has'];
+            return in_array(substr($methodName, 0, 3), $magentoMagicMethods);
+        }
+
+        if( $classReflection->getName() == SessionManager::class || $classReflection->isSubclassOf(SessionManager::class)){
+            $magentoMagicMethods = ['get', 'set', 'uns', 'has'];
+            return in_array(substr($methodName, 0, 3), $magentoMagicMethods);
+        }
+        return false;
     }
 
     /**
