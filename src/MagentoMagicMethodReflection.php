@@ -115,4 +115,39 @@ class MagentoMagicMethodReflection implements MethodReflection
             new TrivialParametersAcceptor(),
         ];
     }
+
+    public function getDocComment(): ?string
+    {
+        return $this->dataObject->getMethod($this->getName())->getDocComment();
+    }
+
+    public function isDeprecated(): \PHPStan\TrinaryLogic
+    {
+        return $this->dataObject->getMethod($this->getName())->isDeprecated();
+    }
+
+    public function getDeprecatedDescription(): ?string
+    {
+        return $this->dataObject->getMethod($this->getName())->getDeprecatedDescription();
+    }
+
+    public function isFinal(): \PHPStan\TrinaryLogic
+    {
+        return \PHPStan\TrinaryLogic::createNo();
+    }
+
+    public function isInternal(): \PHPStan\TrinaryLogic
+    {
+        return \PHPStan\TrinaryLogic::createNo();
+    }
+
+    public function getThrowType(): ?\PHPStan\Type\Type
+    {
+        return $this->dataObject->getMethod($this->getName())->getThrowType();
+    }
+
+    public function hasSideEffects(): \PHPStan\TrinaryLogic
+    {
+        return \PHPStan\TrinaryLogic::createYes();
+    }
 }
