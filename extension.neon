@@ -4,5 +4,5 @@ services:
     tags:
         - phpstan.broker.methodsClassReflectionExtension
 parameters:
-    autoload_files:
+    bootstrapFiles:
         - %rootDir%/../../fooman/phpstan-magento2-magic-methods/bootstrap.php
