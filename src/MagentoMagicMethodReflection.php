@@ -118,17 +118,26 @@ class MagentoMagicMethodReflection implements MethodReflection
 
     public function getDocComment(): ?string
     {
-        return $this->dataObject->getMethod($this->getName())->getDocComment();
+        if ($this->dataObject->hasNativeMethod($this->getName())) {
+            return $this->dataObject->getNativeMethod($this->getName())->getDocComment();
+        }
+        return $this->dataObject->getNativeMethod('__call')->getDocComment();
     }
 
     public function isDeprecated(): \PHPStan\TrinaryLogic
     {
-        return $this->dataObject->getMethod($this->getName())->isDeprecated();
+        if ($this->dataObject->hasNativeMethod($this->getName())) {
+            return $this->dataObject->getNativeMethod($this->getName())->isDeprecated();
+        }
+        return $this->dataObject->getNativeMethod('__call')->isDeprecated();
     }
 
     public function getDeprecatedDescription(): ?string
     {
-        return $this->dataObject->getMethod($this->getName())->getDeprecatedDescription();
+        if ($this->dataObject->hasNativeMethod($this->getName())) {
+            return $this->dataObject->getNativeMethod($this->getName())->getDeprecatedDescription();
+        }
+        return $this->dataObject->getNativeMethod('__call')->getDeprecatedDescription();
     }
 
     public function isFinal(): \PHPStan\TrinaryLogic
@@ -143,7 +152,10 @@ class MagentoMagicMethodReflection implements MethodReflection
 
     public function getThrowType(): ?\PHPStan\Type\Type
     {
-        return $this->dataObject->getMethod($this->getName())->getThrowType();
+        if ($this->dataObject->hasNativeMethod($this->getName())) {
+            return $this->dataObject->getNativeMethod($this->getName())->getThrowType();
+        }
+        return $this->dataObject->getNativeMethod('__call')->getThrowType();
     }
 
     public function hasSideEffects(): \PHPStan\TrinaryLogic
