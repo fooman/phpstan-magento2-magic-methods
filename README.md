@@ -6,7 +6,7 @@ the generated class under var/. Change the environment variable `TESTS_TEMP_DIR`
 
 ### Installation Instructions via Composer
 
-    composer require --dev fooman/phpstan-magento2-magic-methods
+    composer require --dev fooman/phpstan-magento2-magic-methods:^0.7
  
  
 ### Note on required use of `phpstan/extension-installer`
