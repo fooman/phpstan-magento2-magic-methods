@@ -1,4 +1,4 @@
-We are likely going to stop supporting this package in the near future. Changes in phpstan's autoloading are surfacing load order / class existence leading to classes being generated when they should be found via Composer's autoloading. As https://github.com/bitExpert/phpstan-magento does not have the same issue and does provide similar functionality we suggest checking it out instead as we will likely adopt it for our uses.
+We are likely going to stop supporting this package in the near future. Changes in phpstan's autoloading are surfacing load order / class existence issues leading to classes being generated when they should be found via Composer's autoloading. As https://github.com/bitExpert/phpstan-magento does not have the same issue and does provide similar functionality we suggest checking it out instead as we will likely adopt it for our uses.
 
 PHPStan Extension - Magento 2 Magic Methods
 ===================
